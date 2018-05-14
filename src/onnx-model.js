@@ -230,7 +230,7 @@ class OnnxGraph {
         var results = [];
         if (this._graph) {
             this._graph.node.forEach((node) => {
-                if (!this._initializerMap[node.output[0]]) {
+                if (!node.output || node.output.length == 0 || !this._initializerMap[node.output[0]]) {
                     results.push(new OnnxNode(this, node));
                 }
             });
